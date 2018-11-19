@@ -24,7 +24,7 @@ axs[0].plot(A_CFD, CL_CFD, label='CFD')
 axs[0].set_ylabel('CL',size=26)
 axs[0].grid(b=True, which='both', axis='both')
 axs[0].legend(fontsize=16)
-axs[0].tick_params(labelsize=12)
+axs[0].tick_params(labelsize=18)
 
 axs[1].plot(AOA, CD, label='Experimental')
 axs[1].plot(A_CFD, CD_CFD, label='CFD')
