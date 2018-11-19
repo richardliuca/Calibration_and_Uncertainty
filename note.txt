@@ -1,0 +1,11 @@
+Lab pratical
+How to set up a sample measurement
+  Power up a device and record input with DAQ (PXI)
+  Wiring and powering
+  NI MAX (find device, test panel, simulate, setp(bit), resolution, continous measurement, adjust range and why, write to measurement file, graph, wire circuit (low pass filter))
+
+Basic of LabView
+  Create new VI and get signal (what you do next)
+Sources of uncertainty
+
+Starting Next Week during lab time

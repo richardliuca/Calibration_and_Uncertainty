@@ -63,11 +63,9 @@ def lvm_to_csv(workDir = None, allfiles = False, target_file = None,
             if i == 0:
                 # Look for the first entries of last column
                 alpha = row[-1]
-            elif '' in row and row[-1] == '':
+            else:
                 # Fill all empty entries and replace wth the first entries
                 row[-1] = alpha
-            else:
-                pass
             # Building 2d list with each row
             columnData.append(row)
         # Save file as .csv with the same name
@@ -75,6 +73,6 @@ def lvm_to_csv(workDir = None, allfiles = False, target_file = None,
         pyexcel.save_as(array = columnData, dest_file_name = newFileName)
 
 if __name__ == '__main__':
-    dir = r'C:\Users\Richard\Google Drive\Berkeley\Berkeley Classes\Fall 2018\ME 103\Lab 4-5\ME103\10.26.2018\Angle Attack Cali'
-    settings = {'workDir': dir, 'allfiles': True, 'ignore':'angleofattackcal_14.lvm'}
+    dir = r'C:\Users\Richard\Google Drive\Berkeley\Berkeley Classes\Fall 2018\ME 103\Lab 4-5\ME103\11.9.2018'
+    settings = {'workDir': dir, 'allfiles': True, 'newName': 'Moment'}
     lvm_to_csv(**settings)
