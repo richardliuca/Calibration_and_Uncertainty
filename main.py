@@ -262,43 +262,43 @@ else:
 
 
 # Fog Machine
-velocity=1.5
-velocityUncertanties=0.05
-density=1.188
-densityUncertanties=0.2/100*density
-chord=0.14
-chordUncertanties=0
-span=0.197
-spanUncertanties=0
-airfoilMass=149.8/1000
+# velocity=1.5
+# velocityUncertanties=0.05
+# density=1.188
+# densityUncertanties=0.2/100*density
+# chord=0.14
+# chordUncertanties=0
+# span=0.197
+# spanUncertanties=0
+# airfoilMass=149.8/1000
+#
+# fSG=resultSG['f']
+# fAOA=resultAOA['f']
+# fDrag=resultDrag['f']
+# fMoment=resultMoment['f']
 
-fSG=resultSG['f']
-fAOA=resultAOA['f']
-fDrag=resultDrag['f']
-fMoment=resultMoment['f']
 
-
-workingDirectory=r'C:\Users\Richard\Google Drive\Berkeley\Berkeley Classes\Fall 2018\ME 103\Lab 4-5\ME103\11.9.2018'
-settings={'dir': workingDirectory,
-            'x': 'X_Value', 'y': 'Ch4_a_control',
-            'xUnit': '[Second]', 'yUnit': '[degree]',
-            'xUncert': 0.0, 'yUncert': levelUncert,
-            'auto': True, 'target_file': 'Fog_Richard_Liu_Sweep.csv',
-            'eqn': 'p1'}
-customEquation=None
-botFogAOA=Calibrator(**settings)
-inputs={'xStd': 0, 'yStd': max(resultAOA['scatterUncert']),
-        'fxParam': [], 'fyParam': [],
-        'fxUncert': [], 'fyUncert': [],
-        'threshold':2000}
-botFogAOA.read_data()
-analyzerFogAOA=decorator(botFogAOA, botFogAOA.analyzer,
-                        h=lambda y:fAOA(y,*resultAOA['param']))
-resultFogAOA=analyzerFogAOA(fx=lambda x:x, fy=lambda y:y, inputs=inputs)
-os.chdir(savingDirectory)
-FogAOAResults=collections.OrderedDict()
-[FogAOAResults.update({key: [list(resultFogAOA[key].keys()), *np.array(list(resultFogAOA[key].values())).transpose().tolist()]}) for key in resultFogAOA.keys()]
-pyexcel.isave_book_as(bookdict=FogAOAResults, dest_file_name='Fog_Time_AOA_Re_1E4.xlsx')
+# workingDirectory=r'C:\Users\Richard\Google Drive\Berkeley\Berkeley Classes\Fall 2018\ME 103\Lab 4-5\ME103\11.9.2018'
+# settings={'dir': workingDirectory,
+#             'x': 'X_Value', 'y': 'Ch4_a_control',
+#             'xUnit': '[Second]', 'yUnit': '[degree]',
+#             'xUncert': 0.0, 'yUncert': levelUncert,
+#             'auto': True, 'target_file': 'Fog_Richard_Liu_Sweep.csv',
+#             'eqn': 'p1'}
+# customEquation=None
+# botFogAOA=Calibrator(**settings)
+# inputs={'xStd': 0, 'yStd': max(resultAOA['scatterUncert']),
+#         'fxParam': [], 'fyParam': [],
+#         'fxUncert': [], 'fyUncert': [],
+#         'threshold':2000}
+# botFogAOA.read_data()
+# analyzerFogAOA=decorator(botFogAOA, botFogAOA.analyzer,
+#                         h=lambda y:fAOA(y,*resultAOA['param']))
+# resultFogAOA=analyzerFogAOA(fx=lambda x:x, fy=lambda y:y, inputs=inputs)
+# os.chdir(savingDirectory)
+# FogAOAResults=collections.OrderedDict()
+# [FogAOAResults.update({key: [list(resultFogAOA[key].keys()), *np.array(list(resultFogAOA[key].values())).transpose().tolist()]}) for key in resultFogAOA.keys()]
+# pyexcel.isave_book_as(bookdict=FogAOAResults, dest_file_name='Fog_Time_AOA_Re_1E4.xlsx')
 
 
 
